@@ -102,6 +102,6 @@ END
 INNER JOIN reports
 ON reports.person_id = people.person_id;
 
-* 日報を一つも提出していない人の名前を取得
+* 日報を一つも提出していない人の名前を取得する。
 
 SELECT p.name, r.content FROM people p LEFT OUTER JOIN reports r USING (person_id) WHERE r.content IS NULL;
