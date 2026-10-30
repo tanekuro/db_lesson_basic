@@ -36,6 +36,8 @@ VALUES
 ('ロージャ', 'ro-zya@beyond-works.co.jp', 33, 2, '2'),
 ('ウーティス', 'utis@beyond-works.co.jp', 34, 2, '4');
 
+振り分け人数は合っているはずです。おそらく13行目に書いたコメントと追加したレコードの順番が営業と開発で逆になっているので見にくかったのかもしれません🙇
+
 * 日報の追加
 
 INSERT INTO reports (person_id, content)
@@ -73,13 +75,13 @@ ORDER BY
 
   SELECTで名前、メール、年齢のカラムを指定し、
   FROMでpeopleというテーブルを指定し、
-  WHEREでdepartment_idというカラムから'1'という値に一致するものを持ってきて、
+  WHEREでdepartment_idというカラムから'1'という値に一致するレコードを持ってきて、
   ORDER BYでデータが作成された日時（created_at）を昇順に書き換えている。
 
 * 20代の女性と40代の男性の名前一覧を同時に取得してください。
 
 <!-- SELECT name, age FROM people WHERE (age >= 20 AND < 30 AND gender = 2) OR (age >= 40 AND < 50 AND gender = 1); < 50 の前にもageが必要　-->
-SELECT name, age FROM people WHERE (age BETWEEN 20 AND 30 AND gender = 2) OR (age BETWEEN 40 AND 50 AND gender = 1); 
+SELECT name, age FROM people WHERE (age BETWEEN age >=20 AND age < 30 AND gender = 2) OR (age BETWEEN age >=40 AND age < 50 AND gender = 1); 
 
 * 営業部に所属する人だけを年齢の昇順で取得してください。
 
